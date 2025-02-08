@@ -2,10 +2,11 @@ import pygame
 import Common as Co
 import Images as Im
 
-pygame.init()
-
 #Run loop
+Co.run=True
+game_state="menu"
 while Co.run:
+    Co.screen.fill(0)
 
 #Exit Screen
     for event in pygame.event.get():
@@ -15,7 +16,7 @@ while Co.run:
     #Sword
     if Co.Sword_picked_up==False:
         Co.screen.blit(Im.sword_image,(Co.Sword_x,Co.Sword_y))
-        
+
     pygame.display.update()
 
-pygame.quit()
+pygame.quit() 

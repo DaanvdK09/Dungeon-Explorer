@@ -5,11 +5,13 @@ import Images as Im
 #Int
 Iconx=975
 Icony=375
-Hw=200
 Hh=30
+SHh=10
 
 #Run loop
+Co.run=True
 while Co.run:
+    Co.screen.fill(0)
 
 #Exit Screen
     for event in pygame.event.get():
@@ -27,11 +29,18 @@ while Co.run:
     #Healthbar
     pygame.draw.rect(Co.screen,Co.GOLD,(float(22+(1/2)),float(36+(1/2)),205,38))
     pygame.draw.rect(Co.screen,Co.BLACK,(25,40,200,30))
-    pygame.draw.rect(Co.screen,Co.GREEN,(25,40,Hw,Hh))
+    pygame.draw.rect(Co.screen,Co.GREEN,(25,40,Co.Hw,Hh))
     if Co.player_hit:
         elapsed_time=Co.current_time-Co.hit_time
-        Dw=(Co.damage_taken/Co.P_Health)*Hw
-        pygame.draw.rect(Co.screen,Co.RED,(25+Hw,40,Dw,Hh))
+        Dw=(Co.damage_taken/Co.P_Health)*Co.Hw
+        pygame.draw.rect(Co.screen,Co.RED,(25+Co.Hw,40,Dw,Hh))
+
+    #Spirit Healthbar
+    pygame.draw.rect(Co.screen,Co.GREEN,((Co.Spirit_x-(Co.SHw/2)+5),(Co.Spirit_y-25),Co.SHw,SHh))
+    if Co.Spirit_hit:
+        elapesed_time=Co.Spirit_current_time-Co.Spirit_hit_time
+        SDw=(Co.Spirit_damage_taken/Co.Spirit_Health)*Co.SHw
+        pygame.draw.rect(Co.screen,Co.RED,((Co.Spirit_x-((Co.SHw/2))+5)+Co.SHw,(Co.Spirit_y-25),SDw,SHh))
 
     pygame.display.update()
 

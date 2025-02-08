@@ -1,8 +1,10 @@
 import pygame
-import os
 import Common as Co
 
-pygame.init()
+#Int
+death_run=False
+pause_run=False
+
 
 #Main Menu
 def main_menu():
@@ -91,8 +93,7 @@ def death_screen():
         pygame.display.update()
 
 #Run loop
-death_run=False
-pause_run=False
+Co.run=True
 game_state="menu"
 while Co.run:
     Co.screen.fill(0)
@@ -108,6 +109,6 @@ while Co.run:
         if event.type==pygame.QUIT:
             Co.run=False
 
-        pygame.display.update()
+    pygame.display.update()
 
-pygame.quit()
+pygame.quit() 

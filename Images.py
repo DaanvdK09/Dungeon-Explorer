@@ -1,8 +1,6 @@
 import pygame
 import Common as Co
 
-pygame.init()
-
 #Int
 Pih=64
 Piw=64
