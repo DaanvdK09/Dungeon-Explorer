@@ -2,6 +2,8 @@ import pygame
 import Common as Co
 import Images as Im
 
+pygame.init()
+
 #Int
 P_speed=float(1/4)
 hit_duration=200

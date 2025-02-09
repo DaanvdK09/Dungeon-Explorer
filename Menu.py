@@ -1,10 +1,11 @@
 import pygame
 import Common as Co
 
+pygame.init()
+
 #Int
 death_run=False
 pause_run=False
-
 
 #Main Menu
 def main_menu():
@@ -19,12 +20,13 @@ def main_menu():
         Co.screen.blit(title_text,(Co.Screen_Width/2-title_text.get_width()/2,50))
         Co.screen.blit(start_text,(Co.Screen_Width/2-start_text.get_width()/2,350))
         Co.screen.blit(options_text,(Co.Screen_Width/2-options_text.get_width()/2,500))
-        Co.screen.blit(quit_text,(Co.Screen_Width-quit_text.get_width()/2,700))
+        Co.screen.blit(quit_text,(Co.Screen_Width/2-quit_text.get_width()/2,700))
 
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 menu_run=False
                 pygame.quit()
+                return "quit"
             if event.type==pygame.KEYDOWN:
                 if event.key==pygame.K_ESCAPE:
                     pygame.display.toggle_fullscreen()
@@ -35,8 +37,9 @@ def main_menu():
                         return "game"
                     elif options_text.get_rect(center=(Co.Screen_Width/2,500+options_text.get_height()/2)).collidepoint(mouse_x,mouse_y):
                         return "options"
-                    elif quit_text.get_rect(center=(Co.Screen_Width,700+quit_text.get_height()/2)).collidepoint(mouse_x,mouse_y):
+                    elif quit_text.get_rect(center=(Co.Screen_Width/2,650+quit_text.get_height()/2)).collidepoint(mouse_x,mouse_y):
                         pygame.quit()
+                        return "quit"
 
         pygame.display.update()
 
@@ -56,7 +59,8 @@ def pause_menu():
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 pause_run=False
-                pygame.quit
+                pygame.quit()
+                return "quit"
             if event.type==pygame.MOUSEBUTTONDOWN:
                 if event.button==1:  # Left mouse button
                     mouse_x,mouse_y=event.pos
@@ -84,6 +88,7 @@ def death_screen():
             if event.type==pygame.QUIT:
                 death_run=False
                 pygame.quit()
+                return "quit"
             if event.type==pygame.MOUSEBUTTONDOWN:
                 if event.button==1:  # Left mouse button
                     mouse_x,mouse_y=event.pos
@@ -104,11 +109,11 @@ while Co.run:
     elif game_state=="death":
         game_state=death_screen()
 
-#Exit Screen
+    #Exit Screen
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             Co.run=False
 
     pygame.display.update()
 
-pygame.quit() 
+pygame.quit()

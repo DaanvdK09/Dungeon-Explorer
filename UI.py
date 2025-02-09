@@ -1,6 +1,9 @@
 import pygame
 import Common as Co
 import Images as Im
+import Main as Ma
+
+pygame.init()
 
 #Int
 Iconx=975
@@ -38,7 +41,7 @@ while Co.run:
     #Spirit Healthbar
     pygame.draw.rect(Co.screen,Co.GREEN,((Co.Spirit_x-(Co.SHw/2)+5),(Co.Spirit_y-25),Co.SHw,SHh))
     if Co.Spirit_hit:
-        elapesed_time=Co.Spirit_current_time-Co.Spirit_hit_time
+        elapesed_time=Ma.Spirit_current_time-Co.Spirit_hit_time
         SDw=(Co.Spirit_damage_taken/Co.Spirit_Health)*Co.SHw
         pygame.draw.rect(Co.screen,Co.RED,((Co.Spirit_x-((Co.SHw/2))+5)+Co.SHw,(Co.Spirit_y-25),SDw,SHh))
 

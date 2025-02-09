@@ -1,12 +1,6 @@
 import pygame
 import math
-import Spirit as Sp
-import Sword as Sw
-import UI as ui
 import Common as Co
-import Images as Im
-import Menu as Me
-import Player as Pl
 
 pygame.init()
 
@@ -33,8 +27,9 @@ while Co.run:
                     if Co.current_time-Co.last_attack_time>=Co.attack_interval:
                         distance=math.sqrt((Co.Px-Co.Spirit_x)**2+(Co.Py-Co.Spirit_y)**2)
                         if distance<=75:
+                            Spirit_current_time=pygame.time.get_ticks()#
                             Co.Spirit_hit=True
-                            Co.Spirit_hit_time=Co.Spirit_current_time
+                            Co.Spirit_hit_time=Spirit_current_time
                             damage=Player_Sword_damage if Co.Sword_picked_up else Player_Fist_damage
                             Co.Spirit_Health-=damage
                             Co.SHw-=(damage/Co.Spirit_Health)*Co.SHw

@@ -2,6 +2,8 @@ import pygame
 import Common as Co
 import Images as Im
 
+pygame.init()
+
 #Run loop
 Co.run=True
 game_state="menu"

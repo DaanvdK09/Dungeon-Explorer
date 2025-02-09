@@ -3,6 +3,8 @@ import math
 import Common as Co
 import UI as Ui
 
+pygame.init()
+
 #Int
 last_shot_time=pygame.time.get_ticks()
 Spirit_hit_duration=75
