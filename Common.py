@@ -2,7 +2,7 @@ import pygame
 
 pygame.init()
 
-#Int
+# Int
 Px = 642
 Py = 350
 Ph = 96
@@ -35,6 +35,9 @@ Sword_picked_up = False
 damage_taken = 0
 Spirit_damage_taken = 5
 current_time = pygame.time.get_ticks()
+
+run=True
+game_state="menu"
 
 # Colors
 BLACK = (0, 0, 0)
@@ -82,21 +85,3 @@ def check_collision(player_rect, orb):
 # Attack Interval
 last_attack_time = pygame.time.get_ticks()
 attack_interval = 5000  # 5 sec
-
-# Run loop
-run = True
-while run:
-    screen.fill(0)
-
-    # Exit Screen
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-
-    player_rect = pygame.Rect(Px, Py, Pw, Ph)
-    spirit_rect = pygame.Rect(Spirit_x, Spirit_y, Spirit_w, Spirit_h)
-    sword_rect = pygame.Rect(Sword_x, Sword_y, Sword_w, Sword_h)
-
-    pygame.display.update()
-
-pygame.quit()

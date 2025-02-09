@@ -1,24 +1,22 @@
 import pygame
-import Common as Co
-import Images as Im
+from Common import run,screen,Sword_picked_up, Sword_x, Sword_y, Screen_Width, Screen_Height
+from Images import sword_image
 
 pygame.init()
 
-#Run loop
-Co.run=True
-game_state="menu"
-while Co.run:
-    Co.screen.fill(0)
+# Run loop
+while run:
+    screen.fill(0)
 
-#Exit Screen
+    # Exit Screen
     for event in pygame.event.get():
-        if event.type==pygame.QUIT:
-            Co.run=False
+        if event.type == pygame.QUIT:
+            run = False
 
-    #Sword
-    if Co.Sword_picked_up==False:
-        Co.screen.blit(Im.sword_image,(Co.Sword_x,Co.Sword_y))
+    # Sword
+    if not Sword_picked_up:
+        screen.blit(sword_image,(Sword_x, Sword_y))
 
     pygame.display.update()
 
-pygame.quit() 
+pygame.quit()
